@@ -1,49 +1,22 @@
-// CharacterList.tsx
 "use client";
 
-import { useEffect, useState } from "react";
-import { notFound } from "next/navigation";
-import games from "@/data/games";
+import { BaseCharacter, Game } from "@/types";
 
-interface Params {
-  gameId: string;
-}
-
-interface Game {
-  id: string;
-  title: string;
-}
-
-const fetchGameData = async (gameId: string) => {
-  const game = games.find((g) => g.id === gameId);
-  if (!game) return null;
-  const charactersModule = await import(`@/data/${game.id}.ts`);
-  return { game, characters: charactersModule.default };
-};
-
-const CharacterList = ({ params }: { params: Params }) => {
-  const [gameData, setGameData] = useState<{
+interface CharacterListProps {
+  gameData: {
     game: Game;
     characters: BaseCharacter[];
-  } | null>(null);
+  };
+}
 
-  useEffect(() => {
-    const loadData = async () => {
-      const data = await fetchGameData(params.gameId);
-      data ? setGameData(data) : notFound();
-    };
-    loadData();
-  }, [params.gameId]);
-
-  if (!gameData) return <div>Loading...</div>;
-
+const CharacterList = ({ gameData }: CharacterListProps) => {
   const { game, characters } = gameData;
 
   return (
     <div>
       <h1 className="mb-2 text-center text-3xl font-bold">{game.title}</h1>
       <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
-        {characters.map((character) => (
+        {characters.map((character: BaseCharacter) => (
           <div
             key={character.id}
             className="relative mx-auto flex h-auto w-full justify-center rounded-lg bg-gray-800"
