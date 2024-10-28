@@ -3,8 +3,8 @@ const path = require("path");
 const sharp = require("sharp");
 
 // Define input and output folder paths
-const inputFolder = path.join(__dirname, "public/honkai_star_rail");
-const outputFolder = path.join(__dirname, "public/honkai_star_rail");
+const inputFolder = path.join(__dirname, "public/honkai_impact");
+const outputFolder = path.join(__dirname, "public/honkai_impact");
 
 // Ensure the output folder exists
 if (!fs.existsSync(outputFolder)) {

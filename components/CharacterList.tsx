@@ -57,7 +57,7 @@ const CharacterList = ({ params }: { params: Params }) => {
                 className="h-full w-full rounded-lg object-contain transition-all"
               />
             )}
-            <h2 className="absolute bottom-0 w-full rounded-lg bg-black bg-opacity-60 p-1 text-center text-2xl font-semibold text-white">
+            <h2 className="absolute bottom-0 w-full rounded-lg bg-black bg-opacity-60 p-1 text-center text-base font-semibold text-white">
               {character.name}
             </h2>
           </div>
