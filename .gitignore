@@ -47,3 +47,5 @@ package-lock.json
 # sitemap
 sitemap-0.xml
 sitemap.xml
+
+.firebase
